@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>国标漏洞评级计算器 - 评级</title>
+<link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="description" content="易于使用的图形化国标安全漏洞评级计算器，并附带提示。"/>
+    <meta name="keywords" content="国标漏洞评级计算器,访问路径,触发要求,权限需求,交互条件,保密性,完整性,可用性,被利用成本,修复难度,影响范围,评级,漏洞矢量"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="cvss-calculator-screenshot.png" />
+    <meta name="og:title" property="og:title" content="国标漏洞评级计算器 v1.0"/>
+    <meta name="twitter:title" content="国标漏洞评级计算器 v1.0"/>
+    <meta name="og:description" property="og:description" content="易于使用的图形化国标安全漏洞评级计算器，并附带提示。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="all" href="cnvrs.css">
+    <script src="cnvrs.js"></script>
+    <style>
+        body {
+            background-color: #e0e4e4;
+            font-family: arial;
+            padding: 1em;
+            text-align: center;
+            align-content: center;
+        }
+        #footer {
+            font-size: x-small;
+        }
+        #cvssboard {
+            text-align: center;
+            align-content: center;
+        }
+        #footer, H3 {
+            color: gray;
+        }
+@media screen and (min-width: 720px) {
+        #cvssboard {
+            width: 640px;
+            align-content: center;
+            display: inline-block;
+        }
+}
+    </style>
+</head>
+
+<body>
+    <hgroup>
+    <h3>国标漏洞评级计算器 v1.0</h3></hgroup>
+    <div id="cvssboard">
+    </div>
+    <br>
+    <footer id="footer">
+Copyright 2019 © Chandan
+<br/><a href="https://github.com/cvssjs">CVSSjs</a> is free to use, copy, modification under a BSD like licence.
+<br/>基于国家标准<a href="http://c.gb688.cn/bzgk/gb/showGb?type=online&hcno=458BACCE700CA8E0B728CFB5F762DE7A">GB/30279-2020</a>《信息安全技术 网络安全漏洞分类分级指南》实现的漏洞危害等级评定计算器。</footer>
+    <script>
+        var c = new CNVRS("cvssboard", {
+            onchange: function() {
+                window.location.hash = c.get().vector;
+                c.vector.setAttribute('href', '#' + c.get().vector)
+            }
+        });
+        if (window.location.hash.substring(1).length > 0) {
+            c.set(decodeURIComponent(window.location.hash.substring(1)));
+        }
+    </script>
+
+</body>
+
+</html>

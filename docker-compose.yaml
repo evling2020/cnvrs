@@ -1,0 +1,7 @@
+services:
+  app:
+    image: evling/cnvrs:1.0
+    build: ./
+    restart: always
+    ports:
+      - "80:80"
